@@ -5,7 +5,7 @@ import { PokemonListResponse } from "../interfaces/index";
 
 export const usePokemons = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 20;
+  const itemsPerPage = 18;
   const offset = (currentPage - 1) * itemsPerPage;
 
   const { data, error } = useSWR<PokemonListResponse, unknown>(
