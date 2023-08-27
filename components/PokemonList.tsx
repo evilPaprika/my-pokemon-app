@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
-import useSWR from 'swr';
-import axios from 'axios';
 import styled from 'styled-components';
+import {usePokemons} from '../api/usePokemons';
 
-const fetcher = (url: string) => axios.get(url).then(res => res.data);
 
-const PokemonList: React.FC = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 20;
-    const offset = (currentPage - 1) * itemsPerPage;
-  
-    const { data, error } = useSWR<PokemonResponse>(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${itemsPerPage}`, fetcher);
-  
+const PokemonList = () => {
+    const { data, error, currentPage, totalPages, setCurrentPage } = usePokemons();
+
     if (error) return <div>Error loading data.</div>;
     if (!data) return <div>Loading...</div>;
   
-    const totalPages = Math.ceil(data.count / itemsPerPage);
   
     return (
       <div>
