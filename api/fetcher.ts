@@ -1,3 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from "axios";
 
-export const fetcher = (url: string) => axios.get(url).then(res => res.data);
+export const fetcher = <T>(url: string): Promise<T> =>
+  axios.get(url).then((res: AxiosResponse<T>) => res.data);

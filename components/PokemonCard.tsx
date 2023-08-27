@@ -1,9 +1,9 @@
-import React from 'react';
-import {usePokemonDetail} from '../api/usePokemonDetail';
+import React from "react";
+import { usePokemonDetail } from "../api/usePokemonDetail";
 
-type PokemonCardProps = {
-    url: string;
-    name: string;
+interface PokemonCardProps {
+  url: string;
+  name: string;
 }
 
 export const PokemonCard = ({ url, name }: PokemonCardProps) => {
@@ -15,8 +15,8 @@ export const PokemonCard = ({ url, name }: PokemonCardProps) => {
   return (
     <div>
       <div>Name: {name}</div>
-      <div>Height: {data.height}</div>
-      <div>Weight: {data.weight}</div>
+      <div>Height: {data?.height}</div>
+      <div>Weight: {data?.weight}</div>
     </div>
   );
 };

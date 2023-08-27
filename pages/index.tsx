@@ -1,10 +1,10 @@
-import PokemonList from '../components/PokemonList'
+import PokemonList from "../components/PokemonList";
 
 const IndexPage = () => (
   <main>
-      <h1>Pokémon List</h1>
-      <PokemonList />
+    <h1>Pokémon List</h1>
+    <PokemonList />
   </main>
-)
+);
 
-export default IndexPage
+export default IndexPage;
