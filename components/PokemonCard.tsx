@@ -1,7 +1,7 @@
 import React from "react";
 import { usePokemonDetail } from "../api/usePokemonDetail";
 import styled from "styled-components";
-import { Pokemon } from "../interfaces/index";
+import Skeleton from "react-loading-skeleton";
 
 interface PokemonCardProps {
   url: string;
@@ -43,13 +43,18 @@ const Stat = styled.div`
 export const PokemonCard = ({ url, name }: PokemonCardProps) => {
   const { data, isLoading, error } = usePokemonDetail(url);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <PokemonCardSkeleton />;
   if (error) return <div>Error</div>;
 
   return (
     <CardContainer>
       <ImageContainer>
-        <Image src={data?.sprites.front_default} alt={name} />
+        <Image
+          width={170}
+          height={170}
+          src={data?.sprites.front_default}
+          alt={name}
+        />
       </ImageContainer>
       <InfoContainer>
         <Name>{name}</Name>
@@ -68,3 +73,34 @@ export const PokemonCard = ({ url, name }: PokemonCardProps) => {
     </CardContainer>
   );
 };
+
+const PokemonCardSkeleton = () => (
+  <CardContainer>
+    <ImageContainer>
+      <Skeleton height={"170px"} width={"170px"} />
+    </ImageContainer>
+    <InfoContainer>
+      <Name>
+        <Skeleton width={"200px"} />
+      </Name>
+      <Stat>
+        <Skeleton width={"200px"} />
+      </Stat>
+      <Stat>
+        <Skeleton width={"200px"} />
+      </Stat>
+      <Stat>
+        <Skeleton width={"200px"} />
+      </Stat>
+      <Stat>
+        <Skeleton width={"200px"} />
+      </Stat>
+      <Stat>
+        <Skeleton width={"200px"} />
+      </Stat>
+      <Stat>
+        <Skeleton width={"200px"} />
+      </Stat>
+    </InfoContainer>
+  </CardContainer>
+);

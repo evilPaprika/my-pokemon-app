@@ -1,4 +1,5 @@
 import PokemonList from "../components/PokemonList";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const IndexPage = () => (
   <main>
