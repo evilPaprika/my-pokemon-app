@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {usePokemons} from '../api/usePokemons';
-
+import { PokemonCard } from './PokemonCard';
 
 const PokemonList = () => {
     const { data, error, currentPage, totalPages, setCurrentPage } = usePokemons();
@@ -12,7 +12,7 @@ const PokemonList = () => {
     return (
       <div>
         {data.results.map((pokemon) => (
-          <div key={pokemon.name}>{pokemon.name}</div>
+            <PokemonCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
         ))}
         <div>
           <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>Previous</button>
